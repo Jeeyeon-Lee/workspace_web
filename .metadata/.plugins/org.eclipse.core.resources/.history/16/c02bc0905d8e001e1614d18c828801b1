@@ -1,0 +1,12 @@
+package com.oracle;
+
+public class TestDao {
+	public void currentTime() {
+		System.out.println("호출");
+	}
+	public static void main(String[] args) {
+		TestDao td = new TestDao();
+		td.currentTime();
+	}
+
+}

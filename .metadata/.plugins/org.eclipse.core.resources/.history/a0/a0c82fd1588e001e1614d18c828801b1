@@ -1,0 +1,11 @@
+package com.dao;
+
+public class TestDao {
+	sqlSessionFactory sqlMap = null;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,20 @@
+package com.oracle;
+
+public class TestDao {
+	SqlSessionFactory sqlMap = null;
+	public void currentTime() {
+		System.out.println("호출");
+		String time = null;
+		try {
+			String resource = "com/mybatis/Configuration.xml";
+			Reader reader = null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		TestDao td = new TestDao();
+		td.currentTime();
+	}
+
+}

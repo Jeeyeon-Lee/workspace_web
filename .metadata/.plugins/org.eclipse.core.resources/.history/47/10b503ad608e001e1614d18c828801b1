@@ -1,0 +1,14 @@
+package com.oracle;
+
+public class TestDao {
+	SqlSessionFactory sqlMap = null;
+	public void currentTime() {
+		System.out.println("호출");
+	}
+	public static void main(String[] args) {
+		TestDao td = new TestDao();
+		td.currentTime();
+		sout
+	}
+
+}

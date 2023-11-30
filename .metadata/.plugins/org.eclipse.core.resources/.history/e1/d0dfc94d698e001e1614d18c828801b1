@@ -1,0 +1,13 @@
+package com.vo;
+
+public class EmpVO {
+	private int empno = 0;
+	private String enmae = "";
+	private String job  = "";
+	private int mgr  = 0;
+	private String hiredate = "";
+	private double sal  = 0.0;
+	private int comm  = 0;
+	private int deptno  = 0;
+
+}

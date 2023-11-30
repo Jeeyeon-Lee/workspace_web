@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="picture.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+</head>
+<body>
+  <div id="d_pic">(큰 사진)</div>
+  <table border="1">
+    <thead>
+      <th colspan="2">그림 목록</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td align="center">
+          <img src="./회의-1.jpg" width="50" height="50" />
+        </td>
+        <td id="0" onmouseover="startMethod(this)" onmouseout="clearMethod()">
+          사진1
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="./회의-2.jpg" width="50" height="50" />
+        </td>
+        <td id="1" onmouseover="startMethod(this)" onmouseout="clearMethod()">
+          사진2
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="./회의-3.jpg" width="50" height="50" />
+        </td>
+        <td id="2" onmouseover="startMethod(this)" onmouseout="clearMethod()">
+          사진3
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <img src="./회의-4.jpg" width="50" height="50" />
+        </td>
+        <td id="3" onmouseover="startMethod(this)" onmouseout="clearMethod()">
+          사진4
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="button" value="이동" onclick="moveTO()">
+    <script>
+	  let xhrObject //전변 선언
+      function createRequest(){
+		try{
+		    xhrObject = new XMLHttpRequest();//비동기통신 객체 생성
+		}catch(trymicrosoft){
+		    xhrObject = null;
+		}
+		if(xhrObject==null){
+		    alert("비동기 통신객체 생성 실패!!!");
+		}
+	} 
+    //마우스가 오버했을 때?메소드 실행
+    startMethod = (td) =>{
+  	  createRequest() //전변으로 선언 -> 함수호출로 생성됨 
+	  console.log(td.id)
+	  xhrObject.onreadystatechange=process;
+	  const url = 'pictureAction.jsp?id='+td.id;
+	  xhrObject.open("GET",url,true);
+	  xhrObject.send();
+    }
+	  
+    function process(){
+//		alert(xhrObject.onreadystatechange)
+		const result = xhrObject.responseText;
+		document.querySelector("#d_pic").innerText = result;
+		console.log("result : "+result);
+	}
+    clearMethod = () =>{
+      $("#d_pic").html("")
+      // console.log('clearMethod');
+    }
+
+    //아래코드 실행 시 새로운 페이지로 이동 & 요청 끊어짐 왜?? 
+    //http의 경우, 비상태 프로토콜로 상태유지가 되지 않는다. 
+    moveTO = () =>{
+      location.href="pictureChange.html"
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+package com.oracle;
+
+import java.io.Reader;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+
+public class TestDao {
+	SqlSessionFactory sqlMap = null;
+	SqlSession session = null;
+	public void currentTime() {
+		System.out.println("호출");
+		String time = null;
+		try {
+			String resource = "com/mybatis/Configuration.xml";
+			Reader reader = null;
+			reader = Resources.getResourceAsReader(resource);
+			sqlMap = new SqlSessionFactoryBuilder().build(reader);
+			session = sqlMap.openSession();
+			time = session.selectOne("");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		TestDao td = new TestDao();
+		td.currentTime();
+	}
+
+}

@@ -1,0 +1,49 @@
+package com.oracle;
+
+import java.io.Reader;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+
+public class TestDao {
+	SqlSessionFactory sqlMap = null;
+	SqlSession session = null;
+	public void currentTime() {
+		System.out.println("호출");
+		String time = null;
+		try {
+			String resource = "com/mybatis/MapperConfig.xml";
+			Reader reader = null;
+			reader = Resources.getResourceAsReader(resource);
+			sqlMap = new SqlSessionFactoryBuilder().build(reader);
+			session = sqlMap.openSession();
+			time = session.selectOne("currentTime");
+			System.out.print(time);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void procEmpcursor() {
+		Map<String,Object> pMap = new HashMap<>();
+		try {
+			String resource = "com/mybatis/MapperConfig.xml";
+			Reader reader = null;
+			reader = Resources.getResourceAsReader(resource);
+			sqlMap = new SqlSessionFactoryBuilder().build(reader);
+			session = sqlMap.openSession();
+			session.selectOne("proc_empcursor",pMap)
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	public static void main(String[] args) {
+		TestDao td = new TestDao();
+		td.currentTime();
+	}
+
+}
