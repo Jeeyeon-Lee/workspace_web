@@ -1,0 +1,38 @@
+package com.ch5;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class HelloServlet extends HttpServlet{ //싱글톤패턴 -> 하나다 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		super.init(config);
+	}
+
+	@Override
+	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.service(arg0, arg1);
+	}
+
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		super.destroy();
+	}
+
+
+}
